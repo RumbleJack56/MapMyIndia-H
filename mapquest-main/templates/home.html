@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apis.mappls.com/advancedmaps/api/d0743fa34100c0191e53f929ee70423d/map_sdk?v=3.0&layer=vector"></script>
+    <title>Location Search</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='/css/homestyle.css')}}" />
+</head>
+<body>
+    <nav>
+        <div class="container">
+          <a href="/ind"><h1 class="logo">AsWe<span>Go</span></h1></a>
+          <div class="logo">
+            <div class="links">
+            <a href="/webpage">ChatBot</a>
+            <a href="/home">Detours</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+    <!-- <div class="chat-container">
+        <div class="input-output">
+          <div class="output" id="outputWindow">
+            <p>Write something!</p>
+          </div>
+          <div class="input">
+            <input type="text" placeholder="Say Something!" id="inputText" />
+            <button id="submitButton">Submit</button>
+          </div>
+        </div>
+        <div class="mapcontainer" id="map"></div>
+      </div> -->
+
+    <div class="chat-container">
+      <div class="input-output">
+        <div class="output">
+        <h1 align="center">Location Search</h1>
+        <form action="/location" method="POST">
+          <div class="input">
+            <h2><label for="current-location-input">Current Location </label></h2>
+            <input class = "writes" type="text" id="current-location-input" name="current-location-input" placeholder="Enter current location" required>
+            <h2><label for="destination-location-input">Destination Location </label></h2>
+            <input type="text" id="destination-location-input" name="destination-location-input" placeholder="Enter destination location" required>
+            <div style="padding-top: 2rem;">
+              <button type="submit" id="submitButton"><h2>Search</h2></button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+      <div class="mapcontainer" id="map"></div>
+    </div>
+    <script>
+        // Initialize a map
+        map = new mappls.Map('map', {center:{lat:28.612964,lng:77.229463} });
+        // Add behavior to the map
+    </script>
+</body>
+</html>

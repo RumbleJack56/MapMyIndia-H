@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path with Stops</title>
+    <style>
+        /* Specify the size of the map container */
+        #map {
+            width: 100%;
+            height: 650px;
+        }
+    </style>
+    <script src="https://apis.mappls.com/advancedmaps/api/d0743fa34100c0191e53f929ee70423d/map_sdk?v=3.0&layer=vector"></script>
+    <script>
+        const { encode, decode } = require('@pirxpilot/google-polyline')
+        console.log("{{mptk}}");
+    </script>
+    <script src="https://apis.mappls.com/advancedmaps/api/{{mptk}}/map_sdk_plugins?v=3.0"></script>
+    <!-- <script type="text/javascript" src="/path_via.js"></script> -->
+</head>
+<body>
+    <!-- Map container -->
+    <div id="map"></div>
+
+    <!-- Include the HERE Maps API JavaScript files -->
+
+    <script>
+        
+        // Initialize a map
+        var map = new mappls.Map('map', {center:{lat:28.612964,lng:77.229463} });
+        var pL = "{{pLA}}";
+        var locs = "{{locstring}}";
+        console.log(pL);
+        console.log(locs);
+        
+        var locs_sep = locs.split('|');
+        for (var i=0;i<locs_sep.length;++i){
+            console.log(locs_sep[i]);
+            new mappls.pinMarker({
+            map:map,
+            pin:locs_sep[i],
+            width:20,
+            height:35,
+        });
+        }
+        map.addListener('load', function() {
+                var encodedString = pL;
+                encoded_polyline = new mappls.Polyline({
+                    map: map,
+                    paths: encodedString,
+                    strokeColor: 'blue',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 5,
+                    editable: true,
+                    fitbounds: true
+                });
+            });
+       
+    </script>
+</body>
+</html>

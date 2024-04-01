@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://apis.mappls.com/advancedmaps/api/d0743fa34100c0191e53f929ee70423d/map_sdk?v=3.0&layer=vector"></script>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='/css/webpagestyle.css')}}" />
+    <title>MapQuest</title>
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <a href="/ind"><h1 class="logo">Map<span>Quest</span></h1></a>
+        <div class="logo">
+          <div class="links">
+          <a href="/webpage">ChatBot</a>
+          <a href="/home">Detours</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="chat-container">
+      <div class="input-output">
+        <div class="output" id="outputWindow">
+          <h2 style="font-family: Helvetica;">Assistant</h2>
+          {% for message in messages %}
+  <div class="message {{ message.role }}">
+    {{ message.content }}
+  </div>
+{% endfor %}
+        </div>
+        
+        <form method="POST">
+          <div class="input">
+            <input type="text" name = writeSomething placeholder="Enter your message!" />
+            <button  type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="mapcontainer" id="map"></div>
+    </div>
+    <script>
+      map = new mappls.Map('map', {center:{lat:28.612964,lng:77.229463} });
+      document.addEventListener("DOMContentLoaded", function () {
+        let output = document.getElementById("outputWindow");
+        let input = document.getElementById("inputText");
+        let submitButton = document.getElementById("submitButton");
+
+        submitButton.addEventListener("click", function () {
+          let inputValue = input.value;
+          output.innerHTML = `<p>${inputValue}</p>`;
+          input.value = "";
+        });
+      });
+    </script>
+    <!-- <script>
+      var platform = new H.service.Platform({
+        apikey: "JRo2rEIRPPC3ZzqqBMiJ9PjEg8oG1qD67P08byN1fIM",
+      });
+
+      var defaultLayers = platform.createDefaultLayers();
+      map = new H.Map(
+        document.getElementById("map"),
+        defaultLayers.vector.normal.map,
+        {
+          center: { lat: 0, lng: 0 },
+          zoom: 2,
+          pixelRatio: window.devicePixelRatio || 1,
+        }
+      );
+
+      // Add behavior to the map
+      var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+      // Create the default UI components
+      var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+      document.addEventListener("DOMContentLoaded", function () {
+        let output = document.getElementById("outputWindow");
+        let input = document.getElementById("inputText");
+        let submitButton = document.getElementById("submitButton");
+
+        submitButton.addEventListener("click", function () {
+          let inputValue = input.value;
+          output.innerHTML = `<p>${inputValue}</p>`;
+          input.value = "";
+        });
+      });
+    </script> -->
+  </body>
+</html>

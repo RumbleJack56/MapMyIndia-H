@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MapQuest</title>
+    <script src="https://apis.mappls.com/advancedmaps/api/d0743fa34100c0191e53f929ee70423d/map_sdk?v=3.0&layer=vector"></script>
+    <script>
+        console.log("{{mptk}}");
+    </script>
+    <script src="https://apis.mappls.com/advancedmaps/api/{{mptk}}/map_sdk_plugins?v=3.0"></script>
+    <link rel="stylesheet" href="{{url_for('static',filename='/css/homestyle.css')}}" />
+</head>
+<body>
+    <nav>
+        <div class="container">
+          <a href="/ind"><h1 class="logo">Map<span>Quest</span></h1></a>
+          <div class="logo">
+            <div class="links">
+            <a href="/webpage">ChatBot</a>
+            <a href="/home">Detours</a>
+            </div>
+          </div>
+        </div>
+    </nav>
+
+    <div class="chat-container">
+        <div class="input-output">
+            <div class="output">
+                <h2>Enter Stops Between Current Location and Destination</h2>
+                <br>
+                <form id="stops-form" action="/path" method="POST">
+                    <div class="input">
+                    <label for="current-location-input">Current Location:</label>
+                    <br>
+                    <input type="text" id="current-location-input" name="current-location-input" value="{{ Cl }}" readonly>
+                    <br>
+                    <label for="destination-location-input">Destination Location:</label>
+                    <br>
+                    <input type="text" id="destination-location-input" name="destination-location-input" value="{{ Dl }}" readonly>
+                    <br>
+                    <label for="stop-count">Number of Stops:</label>
+                    <br>
+                    <select id="stop-count" name="stop-count">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    <br>
+                    <div id="stops-inputs">
+                        <!-- Stops input fields will be added dynamically based on the selected number of stops -->
+                    </div>
+                    <div style="padding-top: 2rem;">
+                        <button type="submit">Submit</button>
+                    </div>
+                    </div>
+                </form>
+            </div>
+        
+    </div>
+    <div class="mapcontainer" id="map"></div>
+    <script>
+        // Initialize a map
+        var map = new mappls.Map('map', {center:{lat:28.612964,lng:77.229463} });
+        // Add behavior to the map
+        var elocs = '{{eLocs}}';
+        var st = elocs.substring(0,6);
+        var dst = elocs.substring(6,12);
+        console.log(st);
+        console.log(dst);
+
+        mappls.pinMarker({
+            map:map,
+            pin:st,
+            popupHtml:"<h1>{{Cl}}</h1>",
+        });
+        mappls.pinMarker({
+            map:map,
+            pin:dst,
+            popupHtml:"<h1>{{Dl}}</h1>",
+        });
+
+    </script>
+    <script>
+        // Function to dynamically generate input fields for stop names based on the selected number of stops
+        document.getElementById('stop-count').addEventListener('change', function() {
+        var stopCount = parseInt(this.value);
+        var stopsInputs = document.getElementById('stops-inputs');
+        stopsInputs.innerHTML = ''; // Clear existing inputs
+        
+        for (var i = 0; i < stopCount; i++) {
+            var container = document.createElement('div'); // Create a div container
+            var label = document.createElement('label');
+            label.textContent = 'Stop ' + (i + 1);
+            var input = document.createElement('input');
+            input.type = 'text';
+            input.name = 'stop-' + (i + 1);
+            input.required = true;
+            container.appendChild(label);
+            container.appendChild(input);
+            stopsInputs.appendChild(container); // Append the container instead of the label and input directly
+            stopsInputs.appendChild(document.createElement('br'));
+        }
+    });
+    </script>
+</body>
+</html>
