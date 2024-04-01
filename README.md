@@ -32,5 +32,7 @@ Snippets:
 <img width="1512" alt="Screenshot 2024-04-02 at 1 14 21 AM" src="https://github.com/RumbleJack56/MapMyIndia-H/assets/10181816/96a4320e-20e7-4db7-b6ae-f9d51f11a28a">
 <img width="1512" alt="Screenshot 2024-04-02 at 1 14 26 AM" src="https://github.com/RumbleJack56/MapMyIndia-H/assets/10181816/16a07c8e-c974-49f0-9a3c-90f79891c7d6">
 <img width="1512" alt="Screenshot 2024-04-02 at 1 20 38 AM" src="https://github.com/RumbleJack56/MapMyIndia-H/assets/10181816/28baeb89-ba4a-459d-9175-cddd978958e8">
+<img width="509" alt="Screenshot 2024-04-02 at 1 23 33 AM" src="https://github.com/RumbleJack56/MapMyIndia-H/assets/10181816/6e67c0d2-e9a4-4944-b639-a6d98bae9a8a">
+<img width="489" alt="Screenshot 2024-04-02 at 1 25 23 AM" src="https://github.com/RumbleJack56/MapMyIndia-H/assets/10181816/eb98e855-be9f-49bd-88f8-9d9807d209da">
 <img width="1512" alt="Screenshot 2024-04-02 at 1 16 13 AM" src="https://github.com/RumbleJack56/MapMyIndia-H/assets/10181816/c93356fd-69d9-413e-9224-644294bb25e6">
 <img width="1512" alt="Screenshot 2024-04-02 at 1 16 52 AM" src="https://github.com/RumbleJack56/MapMyIndia-H/assets/10181816/b893ad6f-b85e-43f2-9855-661ffce3e30f">
