@@ -5,11 +5,12 @@ from functools import reduce
 import time
 import os
 import internal_functions
+import OPENAI_SECRET_KEY
 
 
 
 ENVVARS = {'MAPPL_API_KEY' : '',
-           'OPENAI_API_KEY' : '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',
+           'OPENAI_API_KEY' : os.getenv("OPENAI_SECRET_KEY"),
            'MAPPL_AUTH_TOKEN' : 'e937c3c7-017a-4cd5-9880-ec91eeb45d0b'}
 
 
